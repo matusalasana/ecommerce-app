@@ -3,3 +3,14 @@
 a.active hr {
     display:block;
 }
+
+
+a.active p{
+    font-weight: bold;
+    background-color: gray;
+    color: white;
+    width: 300px;
+    border-radius: 8px;
+    padding: 0.5rem 0;
+    text-align: center;
+}
