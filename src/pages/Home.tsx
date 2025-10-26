@@ -1,8 +1,13 @@
+import Hero from "../components/Hero"
+import LatestCollection from "../components/LatestCollection"
 
 
 function Home() {
   return (
-    <div>This is home page</div>
+    <div>
+      <Hero />
+      <LatestCollection/>
+    </div>
   )
 }
 

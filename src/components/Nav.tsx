@@ -83,7 +83,7 @@ function Nav() {
 
             <BiMenu 
                 onClick={()=>setVisibility(true)} 
-                className="menuitem cursor-pointer sm:hidden" 
+                className="cursor-pointer block sm:hidden " 
                 fontSize={'25px'} 
             />
 
@@ -109,16 +109,16 @@ function Nav() {
             '
                 >
                     <NavLink to={'/'}>
-                        <p>Home</p>
+                        <p className='sm-device-menu'>Home</p>
                     </NavLink>
                     <NavLink to={'/collection'} >
-                        <p>Collection</p>
+                        <p className='sm-device-menu'>Collection</p>
                     </NavLink>
                     <NavLink to={'/about'} >
-                        <p>About</p>
+                        <p className='sm-device-menu'>About</p>
                     </NavLink>
                     <NavLink to={'/contact'} >
-                        <p>Contact</p>
+                        <p className='sm-device-menu'>Contact</p>
                     </NavLink>
                 </div>
             </div>

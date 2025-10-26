@@ -2,7 +2,9 @@
 
 function Products() {
   return (
-    <div>Products</div>
+    <div>
+      This is product page
+    </div>
   )
 }
 
