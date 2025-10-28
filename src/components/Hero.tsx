@@ -1,5 +1,5 @@
 
-import newArrival from '../assets/images/New-Arrival-High-Quality-Male-Jacket.jpeg'
+import newArrivals from '../assets/New-Arrival-High-Quality-Male-Jacket.jpeg';
 
 function Hero() {
   return (
@@ -43,7 +43,7 @@ function Hero() {
 
         {/* Hero right side */}
         <img 
-            src={newArrival}
+            src={newArrivals}
             alt="latest arrivals" 
             className="w-[500px] max-sm:w-[90%]" />
     </div>

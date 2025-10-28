@@ -1,11 +1,11 @@
 
 import { Link, NavLink } from 'react-router-dom'
-import logo from '../assets/images/logo.svg'
+import logo from '../assets/logo.svg'
 import { BsSearch } from 'react-icons/bs'
 import { CgProfile } from 'react-icons/cg'
 import { BiCart, BiMenu } from 'react-icons/bi'
 import { useState } from 'react'
-import { FcLeft } from 'react-icons/fc'
+import backIcon from '../assets/dropdown_icon.png'
 
 function Nav() {
 
@@ -92,7 +92,7 @@ function Nav() {
         <div className={`absolute top-0 right-0 bottom-0 overflow-hidden bg-white transition-all ${visibility ? 'w-full' : 'w-0'}`}>
             <div className='flex flex-col gap-1 text-gray-600 p-3'>
                 <div onClick={()=> setVisibility(false)} className='flex items-center py-2 gap-4'>
-                    <FcLeft style={{fontSize:'20px', color:'black'}} />
+                    <img src={backIcon} alt="dropdown icon" className='h-5' />
                     <p className='font-bold'>Back</p>
                 </div>
                 <div 
