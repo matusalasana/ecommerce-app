@@ -3,10 +3,9 @@ import { Link, NavLink } from 'react-router-dom'
 import smLogo from '../assets/sm logo.svg'
 import storeLogo from '../assets/store logo.svg'
 import { BsSearch } from 'react-icons/bs'
-import { CgProfile } from 'react-icons/cg'
+import { CgClose, CgProfile } from 'react-icons/cg'
 import { BiCart, BiMenu } from 'react-icons/bi'
 import { useState } from 'react'
-import backIcon from '../assets/dropdown_icon.png'
 
 function Nav() {
 
@@ -18,7 +17,7 @@ function Nav() {
             <img src = {smLogo} alt="logo" className='max-sm:w-20 mb-px' />
             <img src = {storeLogo} alt="logo" className='max-sm:w-[78px] w-[95px]' />
         </Link>
-        <div className='navlinks hidden sm:flex gap-5 text-sm text-gray-700'>
+        <div className='hidden sm:flex gap-5 text-sm text-gray-700'>
             <NavLink to={'/'} className = "flex flex-col items-center gap-1" >
                 <p>Home</p>
                 <hr className=' w-2/4 h-0.5 bg-gray-700 hidden' />
@@ -93,11 +92,22 @@ function Nav() {
 
         </div>
 
-        <div className={`absolute top-0 right-0 bottom-0 overflow-hidden bg-white transition-all ${visibility ? 'w-full' : 'w-0'}`}>
+        <div 
+            className={`
+            h-[100vh]
+            bg-red-500 
+            absolute 
+            top-0 
+            right-0 
+            bottom-0 
+            overflow-hidden 
+            bg-white 
+            transition-all 
+            ${visibility ? 'w-[40vw]' : 'w-0'}`}
+        >
             <div className='flex flex-col gap-1 text-gray-600 p-3'>
                 <div onClick={()=> setVisibility(false)} className='flex items-center py-2 gap-4'>
-                    <img src={backIcon} alt="dropdown icon" className='h-5' />
-                    <p className='font-bold'>Back</p>
+                    <CgClose fontSize={25} color='red' className='rounded-md '/>
                 </div>
                 <div 
                     className='
