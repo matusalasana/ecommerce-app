@@ -29,7 +29,7 @@ function LatestCollection() {
 
       <div className="grid base:grid-cols-2 max-sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-5 gap-5">
         {latestProducts?.slice(0,10).map((product, index)=>(
-          <div className="rounded-xl p-1 shadow-md shadow-black">
+          <div>
             <ProductItem name={product.name} price={product.price} key={index} imgURL={product.image} productId={product._id} />
           </div>
         ))}

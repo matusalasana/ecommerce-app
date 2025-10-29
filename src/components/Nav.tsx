@@ -13,7 +13,7 @@ function Nav() {
     const [visibility, setVisibility] = useState(false)
 
   return (
-    <nav className='flex justify-between items-center px-5 py-8'>
+    <nav className='flex justify-between items-center px-5 py-8 fixed bg-white w-full'>
         <Link to={'/'}>
             <img src = {smLogo} alt="logo" className='max-sm:w-20 mb-px' />
             <img src = {storeLogo} alt="logo" className='max-sm:w-[78px] w-[95px]' />
@@ -107,7 +107,6 @@ function Nav() {
                         items-center 
                         gap-4 
                         mt-10
-                        
                         text-xl
                         text-gray-600
             '
