@@ -21,6 +21,9 @@ function ProductItem({name, productId, imgURL, price}:Props) {
         </div>
         <p className="text-md font-semibold mb-2">{name}</p>
         <p className="text-sm text-gray-600">{item?.currency} {price}</p>
+        <div className="flex justify-center">
+          <button className="bg-orange-600 text-white font-semibold px-5 py-1 rounded-xl cursor-pointer hover:bg-orange-700 mt-7 center">Buy now</button>
+        </div>
 
     </Link>
   )

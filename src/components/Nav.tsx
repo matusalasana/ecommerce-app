@@ -14,10 +14,10 @@ function Nav() {
 
   return (
     <nav className='flex justify-between items-center px-5 py-8'>
-        <div>
+        <Link to={'/'}>
             <img src = {smLogo} alt="logo" className='max-sm:w-20 mb-px' />
             <img src = {storeLogo} alt="logo" className='max-sm:w-[78px] w-[95px]' />
-        </div>
+        </Link>
         <div className='navlinks hidden sm:flex gap-5 text-sm text-gray-700'>
             <NavLink to={'/'} className = "flex flex-col items-center gap-1" >
                 <p>Home</p>

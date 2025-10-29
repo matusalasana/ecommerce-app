@@ -16,17 +16,17 @@ function Footer() {
 
         <div className="flex flex-col">
           <p className="text-sl font-semibold mb-1 mt-5">COMPANY</p>
-          <p>Home</p>
-          <p>About Us</p>
-          <p>Delivery</p>
-          <p>Privacy Policy</p>
+          <p className="cursor-pointer hover:text-white">Home</p>
+          <p className="cursor-pointer hover:text-white">About Us</p>
+          <p className="cursor-pointer hover:text-white">Delivery</p>
+          <p className="cursor-pointer hover:text-white">Privacy Policy</p>
         </div>
 
         <div className="flex flex-col">
           <p className="text-xl font-semibold mb-1 mt-5">GET IN TOUCH</p>
           <p>+251-945807386</p>
-          <p>matusalasana@gmail.com</p>
-          <p>@sana1514</p>
+          <p className="cursor-pointer hover:text-white">matusalasana@gmail.com</p>
+          <p className="cursor-pointer hover:text-white">@sana1514</p>
         </div>
     </div>
 
@@ -36,7 +36,7 @@ function Footer() {
           <p>Copyright. All rights reserved.</p>
         </div>
         <div>
-          <p>Terms & Conditions</p>
+          <p className="cursor-pointer hover:text-white">Terms & Conditions</p>
         </div>
       </div>
 

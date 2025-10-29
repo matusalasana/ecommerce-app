@@ -43,7 +43,7 @@ const Subscription = () => {
         >
             <input 
                 type='text' 
-                placeholder='subscribe@emarket.com' 
+                placeholder='subscribe@sm-store.com' 
                 className='
                 p-1.5 
                 input 
