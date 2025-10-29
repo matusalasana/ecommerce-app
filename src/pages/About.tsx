@@ -14,7 +14,7 @@ function About() {
         <div className="flex flex-row max-sm:flex-col gap-15 mb-30 mt-10">
           <img src={aboutImg} alt="about image" className="overflow-hidden" />
           <div>
-            <p className="text-xs sm:text-sm mb-10 leading-relaxed">Forever was born out of a passion for innovation and a desire to revolutionize the way people shop online. 
+            <p className="text-xs sm:text-sm mb-10 leading-relaxed">SMstore was born out of a passion for innovation and a desire to revolutionize the way people shop online. 
               Our journey began with a simple idea: 
               to provide a platform where customers can easily discover, 
               explore, and purchase a wide range of products from the comfort of their homes.
@@ -27,7 +27,7 @@ function About() {
             </p>
             <p className="font-semibold">Our Mission</p>
             <p className="text-xs sm:text-sm mb-10 leading-relaxed">
-              Our mission at Forever is to empower customers with choice, 
+              Our mission at SMstore is to empower customers with choice, 
               convenience, and confidence. We're dedicated to providing 
               a seamless shopping experience that exceeds expectations, 
               from browsing and ordering to delivery and beyond.
