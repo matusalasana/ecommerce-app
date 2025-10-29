@@ -31,7 +31,7 @@ function BestSellers() {
         {latestProducts?.map((product, index)=>(
           <>
           { product.bestseller==true &&
-          <div className="bg-slate-200 rounded-xl p-1">
+          <div className="rounded-xl p-1 shadow-md shadow-black">
             <ProductItem name={product.name} price={product.price} key={index} imgURL={product.image} productId={product._id} />
           </div>
           }
