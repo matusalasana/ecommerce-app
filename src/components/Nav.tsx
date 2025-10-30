@@ -7,7 +7,11 @@ import { CgClose, CgProfile } from 'react-icons/cg'
 import { BiCart, BiMenu } from 'react-icons/bi'
 import { useState } from 'react'
 
-function Nav() {
+interface Props{
+    onClickSearch:()=>void
+}
+
+function Nav({onClickSearch}:Props) {
 
     const [visibility, setVisibility] = useState(false)
 
@@ -41,7 +45,9 @@ function Nav() {
 
         <div className='flex items-center gap-6'>
 
-            <BsSearch fontSize={'20px'} />
+            <Link to={'/collection'}>
+                <BsSearch onClick={onClickSearch} fontSize={'20px'} />
+            </Link>
 
             <div className='group relative'>
                 <CgProfile fontSize={'25px'} />
@@ -94,8 +100,7 @@ function Nav() {
 
         <div 
             className={`
-            h-[100vh]
-            bg-red-500 
+            h-screen
             absolute 
             top-0 
             right-0 

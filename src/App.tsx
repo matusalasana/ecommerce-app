@@ -9,15 +9,19 @@ import LogIn from "./pages/LogIn"
 import PlaceOrder from "./pages/PlaceOrder"
 import Orders from "./pages/Orders"
 import Nav from "./components/Nav"
+import { useState } from "react"
 
 
 function App() {
+
+  const [visibility, setVisibility] =useState('hidden')
+
   return (
     <div>
-      <Nav/>
+      <Nav onClickSearch={()=>setVisibility('block')}/>
       <Routes>
         <Route path="/" element= {<Home/>} />
-        <Route path="/collection" element = {<Collection/>} />
+        <Route path="/collection" element = {<Collection onClickClose={()=> setVisibility('hidden')} status={visibility} />} />
         <Route path="/about" element = {<About/>} />
         <Route path="/contact" element = {<Contact/>} />
         <Route path="/product/:productId" element = {<Product/>} />
