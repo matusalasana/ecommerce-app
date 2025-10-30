@@ -50,7 +50,7 @@ function Nav({onClickSearch}:Props) {
             </Link>
 
             <div className='group relative'>
-                <CgProfile fontSize={'25px'} />
+                <Link to={'/login'}><CgProfile fontSize={'25px'} /></Link>
                 <div 
                     className='
                         absolute 
