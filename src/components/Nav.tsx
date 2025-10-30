@@ -16,7 +16,7 @@ function Nav({onClickSearch}:Props) {
     const [visibility, setVisibility] = useState(false)
 
   return (
-    <nav className='flex justify-between items-center px-5 py-8 fixed bg-white w-full'>
+    <nav className='flex justify-between items-center px-5 py-8 fixed bg-white w-full z-10'>
         <Link to={'/'}>
             <img src = {smLogo} alt="logo" className='max-sm:w-20 mb-px' />
             <img src = {storeLogo} alt="logo" className='max-sm:w-[78px] w-[95px]' />
