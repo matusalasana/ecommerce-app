@@ -32,7 +32,7 @@ function BestSellers() {
           <>
           { product.bestseller==true &&
           <div>
-            <ProductItem name={product.name} price={product.price} key={index} imgURL={product.image} productId={product._id} />
+            <ProductItem name={product.name} price={product.price} key={index} imgURL={product.image} productId={product._id} category={product.category} />
           </div>
           }
           </>

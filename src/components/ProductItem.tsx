@@ -7,14 +7,16 @@ interface Props {
     imgURL:string[];
     productId:string;
     price:number;
+    category?:string;
 }
 
-function ProductItem({name, productId, imgURL, price}:Props) {
+
+function ProductItem({name, productId, imgURL, price, category}:Props) {
 
     const item = useContext(ShopContext)
 
   return (
-    <Link to={`/product/${productId}`}>
+    <Link to={`/product/${category}/${productId}`}>
       <div className="rounded-xl shadow-md shadow-black p-1">
         <div className="overflow-hidden">
             <img src={imgURL[0]} alt={name} className="hover:scale-110 transition ease-in-out w-full rounded-xl" />

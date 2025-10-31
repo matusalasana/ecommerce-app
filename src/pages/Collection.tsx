@@ -136,7 +136,7 @@ function Collection({status, onClickClose}:Props) {
         >
           {items?.products.filter(p=>p.name.toLowerCase().includes(text.toLowerCase())).map((item) => (
             <div className="">
-              <ProductItem name={item.name} price={item.price} productId={item._id} imgURL={item.image} />
+              <ProductItem name={item.name} price={item.price} productId={item._id} imgURL={item.image} category={item.category}/>
             </div>
           ))}
         </div>

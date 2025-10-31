@@ -6,13 +6,16 @@ import ratingIcon from '../assets/star_icon.png'
 import blurRatingIcon from '../assets/star_dull_icon.png'
 import Footer from "../components/Footer"
 import Reviews from "../components/Reviews"
+import ProductItem from "../components/ProductItem"
+import Title from "../components/Title"
 
 
 function Product() {
 
   const items = useContext(ShopContext)
   const {productId} = useParams();
-  console.log(productId)
+  const {category} = useParams()
+  console.log(category)
 
   return (
     <div className="pt-30">
@@ -51,6 +54,16 @@ function Product() {
           </div>
         ))}
       <Reviews/>
+      <div className="mt-10">
+        <Title text1="RELATED" text2="PRODUCTS"/>
+        <div className="grid base:grid-cols-2 max-sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-5 gap-5">
+          {items?.products.filter(item=>item.category == category).map((product)=>(
+            <div>
+              <ProductItem name={product.name} productId={product._id} imgURL={product.image} price={product.price} category={product.category}/>
+            </div>
+          ))}
+        </div>
+      </div>
       <Footer/>
     </div>
   )
