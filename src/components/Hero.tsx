@@ -3,7 +3,7 @@ import newArrivals from '../assets/New-Arrival-High-Quality-Male-Jacket.jpeg';
 
 function Hero() {
   return (
-    <section className="relative min-h-[80vh] flex items-center justify-center bg-linear-to-br from-gray-50 to-gray-100 px-5 sm:px-6 lg:px-8 overflow-hidden pt-10">
+    <section className="relative min-h-[80vh] flex items-center justify-center px-5 sm:px-6 lg:px-8 overflow-hidden pt-10">
       <div className="container mx-auto max-w-7xl">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
           

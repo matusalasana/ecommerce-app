@@ -10,7 +10,7 @@ import PlaceOrder from "./pages/PlaceOrder"
 import Orders from "./pages/Orders"
 import Nav from "./components/Nav"
 import Error from "./pages/Error"
-import { useState, useEffect } from "react"
+import { useEffect, useState } from "react"
 import SignUp from "./pages/SignUp"
 import Profile from "./pages/Profile"
 
@@ -18,18 +18,16 @@ function App() {
   const [searchVisibility, setSearchVisibility] = useState('hidden')
   const location = useLocation()
 
-  // Reset search visibility when route changes
   useEffect(() => {
-    setSearchVisibility('hidden')
-  }, [location.pathname])
-
-  // Scroll to top on route change
-  useEffect(() => {
-    window.scrollTo(0, 0)
-  }, [location.pathname])
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior:'auto'
+    });
+  }, [location]);
 
   return (
-      <div className="min-h-screen bg-white">
+      <div className="min-h-screen bg-linear-to-br from-gray-50 to-gray-100">
         <Nav onClickSearch={() => setSearchVisibility('block')} />
         
         <main>
@@ -53,8 +51,6 @@ function App() {
             <Route path="/profile" element={<Profile/>} />
             <Route path="/place-order" element={<PlaceOrder />} />
             <Route path="/orders" element={<Orders />} />
-            
-            {/* Error Routes */}
             <Route path="/404" element={<Error />} />
             <Route path="*" element={<Error />} />
           </Routes>
