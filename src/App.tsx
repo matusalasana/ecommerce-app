@@ -16,45 +16,72 @@ import Profile from "./pages/Profile"
 
 function App() {
   const [searchVisibility, setSearchVisibility] = useState('hidden')
-  const location = useLocation()
+  const page = useLocation()
 
+  {/* scroll to top when routing */}
   useEffect(() => {
     window.scrollTo({
       top: 0,
       left: 0,
       behavior:'auto'
     });
-  }, [location]);
+  }, [page]);
 
   return (
-      <div className="min-h-screen bg-linear-to-br from-gray-50 to-gray-100">
+      <div 
+        className="
+        min-h-screen 
+        bg-linear-to-br 
+        from-gray-50 
+        to-gray-100"
+      >
+
         <Nav onClickSearch={() => setSearchVisibility('block')} />
-        
+
         <main>
           <Routes>
-            <Route path="/" element={<Home />} />
+            <Route 
+              path="/" 
+              element={<Home />} />
             <Route 
               path="/collection" 
-              element={
-                <Collection 
-                  onClickClose={() => setSearchVisibility('hidden')} 
-                  status={searchVisibility} 
-                />
-              } 
-            />
-            <Route path="/about" element={<About />} />
-            <Route path="/contact" element={<Contact />} />
-            <Route path="/product/:category/:productId" element={<Product />} />
-            <Route path="/cart" element={<Cart />} />
-            <Route path="/login" element={<LogIn />} />
-            <Route path="/signup" element={<SignUp/>} />
-            <Route path="/profile" element={<Profile/>} />
-            <Route path="/place-order" element={<PlaceOrder />} />
-            <Route path="/orders" element={<Orders />} />
-            <Route path="/404" element={<Error />} />
-            <Route path="*" element={<Error />} />
+              element={<Collection onClickClose={() => setSearchVisibility('hidden')} status={searchVisibility} />} />
+            <Route  
+              path="/about" 
+              element={<About />} />
+            <Route  
+              path="/contact" 
+              element={<Contact />} />
+            <Route  
+              path="/product/:category/:productId" 
+              element={<Product />} />
+            <Route  
+              path="/cart" 
+              element={<Cart />} />
+            <Route  
+              path="/login" 
+              element={<LogIn />} />
+            <Route  
+              path="/signup" 
+              element={<SignUp/>} />
+            <Route  
+              path="/profile" 
+              element={<Profile/>} />
+            <Route  
+              path="/place-order" 
+              element={<PlaceOrder />} />
+            <Route  
+              path="/orders" 
+              element={<Orders />} />
+            <Route  
+              path="/404" 
+              element={<Error />} />
+            <Route  
+              path="*" 
+              element={<Error />} />
           </Routes>
         </main>
+        
       </div>
   )
 }
