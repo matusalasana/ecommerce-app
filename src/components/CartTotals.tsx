@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import Title from "./Title"
 
 interface Props {
@@ -38,9 +39,11 @@ function CartTotals({ currency, totalPrice, shippingFee, subTotal }: Props) {
                 </div>
                 
                 {/* Checkout Button */}
-                <button className="px-6 py-3 w-full mt-4 rounded-lg cursor-pointer hover:bg-orange-700 bg-orange-600 text-white font-semibold transition-colors duration-200">
-                    PROCEED TO CHECKOUT
-                </button>
+                <Link to={'/place-order'}>
+                    <button className="px-6 py-3 w-full mt-4 rounded-lg cursor-pointer hover:bg-orange-700 bg-orange-600 text-white font-semibold transition-colors duration-200">
+                        PROCEED TO CHECKOUT
+                    </button>
+                </Link>
                 
                 {/* Continue Shopping */}
                 <button 

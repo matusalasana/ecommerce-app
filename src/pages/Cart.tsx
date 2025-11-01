@@ -3,6 +3,7 @@ import CartBox from "../components/CartBox"
 import CartTotals from "../components/CartTotals"
 import Title from "../components/Title"
 import { ShopContext } from "../context/ShopContext"
+import Footer from "../components/Footer"
 
 function Cart() {
   const items = useContext(ShopContext)
@@ -103,6 +104,7 @@ function Cart() {
           </div>
         </div>
       </div>
+      <Footer/>
     </div>
   )
 }

@@ -3,10 +3,11 @@ import { Link, NavLink } from 'react-router-dom'
 import smLogo from '../assets/sm logo.svg'
 import storeLogo from '../assets/store logo.svg'
 import { BsSearch } from 'react-icons/bs'
-import { CgClose, CgProfile } from 'react-icons/cg'
-import { BiCart, BiMenu } from 'react-icons/bi'
-import { useContext, useState } from 'react'
+import { CgProfile } from 'react-icons/cg'
+import { BiCart } from 'react-icons/bi'
+import { useContext } from 'react'
 import { ShopContext } from '../context/ShopContext'
+import Menu from './Menu'
 
 interface Props{
     onClickSearch:()=>void
@@ -15,8 +16,6 @@ interface Props{
 function Nav({onClickSearch}:Props) {
 
     const items = useContext(ShopContext)
-
-    const [visibility, setVisibility] = useState(false)
 
   return (
     <nav className='flex justify-between items-center px-5 shadow-sm py-8 fixed bg-white w-full z-10'>
@@ -93,57 +92,9 @@ function Nav({onClickSearch}:Props) {
                 >{items?.cartCount ?? 0}</p>
             </Link>
 
-            <BiMenu 
-                onClick={()=>setVisibility(true)} 
-                className="cursor-pointer block sm:hidden " 
-                fontSize={'25px'} 
-            />
-
+            <Menu/>
         </div>
-
-        <div 
-            className={`
-            h-screen
-            absolute 
-            top-0 
-            right-0 
-            bottom-0 
-            overflow-hidden 
-            bg-white 
-            transition-all 
-            ${visibility ? 'w-[40vw]' : 'w-0'}`}
-        >
-            <div className='flex flex-col gap-1 text-gray-600 p-3'>
-                <div onClick={()=> setVisibility(false)} className='flex items-center py-2 gap-4'>
-                    <CgClose fontSize={25} color='red' className='rounded-md '/>
-                </div>
-                <div 
-                    className='
-                        flex 
-                        flex-col 
-                        justify-center 
-                        items-center 
-                        gap-4 
-                        mt-10
-                        text-xl
-                        text-gray-600
-            '
-                >
-                    <NavLink to={'/'}>
-                        <p className='sm-device-menu'>Home</p>
-                    </NavLink>
-                    <NavLink to={'/collection'} >
-                        <p className='sm-device-menu'>Collection</p>
-                    </NavLink>
-                    <NavLink to={'/about'} >
-                        <p className='sm-device-menu'>About</p>
-                    </NavLink>
-                    <NavLink to={'/contact'} >
-                        <p className='sm-device-menu'>Contact</p>
-                    </NavLink>
-                </div>
-            </div>
-        </div>
+        
 
     </nav>
   )

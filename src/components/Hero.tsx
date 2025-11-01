@@ -1,8 +1,9 @@
+import { Link } from 'react-router-dom';
 import newArrivals from '../assets/New-Arrival-High-Quality-Male-Jacket.jpeg';
 
 function Hero() {
   return (
-    <section className="relative min-h-[80vh] flex items-center justify-center bg-linear-to-br from-gray-50 to-gray-100 px-4 sm:px-6 lg:px-8 overflow-hidden">
+    <section className="relative min-h-[80vh] flex items-center justify-center bg-linear-to-br from-gray-50 to-gray-100 px-5 sm:px-6 lg:px-8 overflow-hidden pt-10">
       <div className="container mx-auto max-w-7xl">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
           
@@ -20,7 +21,7 @@ function Hero() {
             {/* Main Heading */}
             <div className="space-y-4">
               <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-gray-900 leading-tight">
-                Latest{' '}
+                New{' '}
                 <span className="text-orange-600 bg-linear-to-r from-orange-600 to-red-600 bg-clip-text">
                   Arrivals
                 </span>
@@ -46,19 +47,21 @@ function Hero() {
                 </span>
               </button>
               
-              <button className="group border-2 border-gray-300 hover:border-orange-600 text-gray-700 hover:text-orange-600 font-medium py-4 px-8 rounded-xl transition-all duration-300">
-                <span className="flex items-center gap-2">
-                  View Collection
-                  <svg 
-                    className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-200" 
-                    fill="none" 
-                    stroke="currentColor" 
-                    viewBox="0 0 24 24"
-                  >
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                  </svg>
-                </span>
-              </button>
+              <Link to={'/collection'}>
+                <button className="group border-2 border-gray-300 hover:border-orange-600 text-gray-700 hover:text-orange-600 font-medium py-4 px-8 rounded-xl transition-all duration-300">
+                  <span className="flex items-center gap-2">
+                    View Collection
+                    <svg 
+                      className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-200" 
+                      fill="none" 
+                      stroke="currentColor" 
+                      viewBox="0 0 24 24"
+                    >
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                    </svg>
+                  </span>
+                </button>
+              </Link>
             </div>
 
             {/* Stats */}

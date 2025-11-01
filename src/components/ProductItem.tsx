@@ -47,7 +47,7 @@ function ProductItem({ name, productId, imgURL, price, category }: Props) {
                     <button 
                         onClick={(e) => {
                             e.preventDefault();
-                            // Optional: Add direct add to cart functionality here
+                            item?.addToCart(productId)
                         }}
                         className="w-full bg-orange-600 hover:bg-orange-700 text-white font-semibold py-3 rounded-lg transition-all duration-200 flex items-center justify-center gap-2 group-hover:shadow-lg"
                     >

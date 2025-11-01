@@ -1,46 +1,74 @@
-import { BiCopyright } from "react-icons/bi"
+import { Link } from "react-router-dom"
+import { BiCopyright, BiPhone, BiEnvelope } from "react-icons/bi"
 import smLogo from "../assets/sm logo.svg"
 import storeLogo from '../assets/store logo white.svg'
 
 function Footer() {
+  const currentYear = new Date().getFullYear()
+
   return (
-    <div id="contact" className="flex flex-col mt-30 text-gray-400 text-md max-sm:text-sm bg-black py-10 px-5">
-      <div className="flex max-sm:flex-col flex-row justify-between">
-        <div>
-          <div>
-            <img src={smLogo} alt="footer logo" className="w-[90px] mb-px" />
-            <img src={storeLogo} alt="footer logo" className="mb-3 w-[85px]" />
+    <footer id="contact" className="bg-black text-gray-400 py-12 px-4 sm:px-6">
+      <div className="max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          
+          {/* Brand Section */}
+          <div className="space-y-4">
+            <div className="flex flex-col items-center gap-1">
+              <img src={smLogo} alt="SM Logo" className="h-8" />
+              <img src={storeLogo} alt="Store Logo" className="h-7" />
+            </div>
+            <p className="text-sm text-center leading-relaxed max-w-md">
+              Your premier destination for quality fashion and lifestyle products. 
+              We're committed to providing exceptional shopping experiences.
+            </p>
           </div>
-          <p className="sm:text-sm text-xs w-90 leading-relaxed">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+
+          {/* Company Links */}
+          <div className="space-y-4">
+            <h3 className="text-white font-semibold text-lg">COMPANY</h3>
+            <div className="space-y-2 text-sm">
+              <Link to="/" className="block hover:text-white transition-colors">Home</Link>
+              <Link to="/about" className="block hover:text-white transition-colors">About Us</Link>
+              <Link to="/delivery" className="block hover:text-white transition-colors">Delivery</Link>
+              <Link to="/privacy" className="block hover:text-white transition-colors">Privacy Policy</Link>
+            </div>
+          </div>
+
+          {/* Contact Info */}
+          <div className="space-y-4">
+            <h3 className="text-white font-semibold text-lg">GET IN TOUCH</h3>
+            <div className="space-y-3 text-sm">
+              <div className="flex items-center gap-2">
+                <BiPhone className="w-4 h-4 text-blue-400" />
+                <span>+251-945807386</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <BiEnvelope className="w-4 h-4 text-blue-400" />
+                <a href="mailto:matusalasana@gmail.com" className="hover:text-white transition-colors">
+                  matusalasana@gmail.com
+                </a>
+              </div>
+              <div>
+                <a href="#" className="hover:text-white transition-colors">@sana1514</a>
+              </div>
+            </div>
+          </div>
         </div>
 
-        <div className="flex flex-col">
-          <p className="text-sl font-semibold mb-1 mt-5">COMPANY</p>
-          <p className="cursor-pointer hover:text-white">Home</p>
-          <p className="cursor-pointer hover:text-white">About Us</p>
-          <p className="cursor-pointer hover:text-white">Delivery</p>
-          <p className="cursor-pointer hover:text-white">Privacy Policy</p>
-        </div>
-
-        <div className="flex flex-col">
-          <p className="text-xl font-semibold mb-1 mt-5">GET IN TOUCH</p>
-          <p>+251-945807386</p>
-          <p className="cursor-pointer hover:text-white">matusalasana@gmail.com</p>
-          <p className="cursor-pointer hover:text-white">@sana1514</p>
-        </div>
-    </div>
-
-      <div className="flex justify-between pb-2 mt-20">
-        <div className="flex gap-1 items-center">
-          <BiCopyright />
-          <p>Copyright. All rights reserved.</p>
-        </div>
-        <div>
-          <p className="cursor-pointer hover:text-white">Terms & Conditions</p>
+        {/* Bottom Section */}
+        <div className="border-t border-gray-800 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+          <div className="flex items-center gap-2 text-sm">
+            <BiCopyright className="w-4 h-4" />
+            <span>Copyright {currentYear}. All rights reserved.</span>
+          </div>
+          <div>
+            <Link to="/terms" className="text-sm hover:text-white transition-colors">
+              Terms & Conditions
+            </Link>
+          </div>
         </div>
       </div>
-
-    </div>
+    </footer>
   )
 }
 
