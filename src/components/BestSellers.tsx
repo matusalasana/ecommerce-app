@@ -22,7 +22,7 @@ function BestSellers() {
 
       <div className="mb-15">
         <Title text1={"BEST"} text2={"SELLERS"} />
-      <p className="w-3/4 m-auto text-xs sm:text-sm md:text-base text-gray-600">
+      <p className="text-gray-600 text-lg max-w-md mx-auto lg:mx-0">
         See what everyone's talking about! Our best sellers collection features the products that customers keep coming back for. Quality that's been tried, tested, and adored.
       </p>
       </div>

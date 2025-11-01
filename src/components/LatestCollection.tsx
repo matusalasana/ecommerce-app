@@ -22,7 +22,7 @@ function LatestCollection() {
 
       <div className="mb-15">
         <Title text1={"LATEST"} text2={"COLLECTIONS"} />
-      <p className="w-[70%] m-auto text-xs sm:text-sm md:text-base text-gray-600">
+      <p className="text-gray-600 text-lg max-w-md mx-auto lg:mx-0">
       Discover the season's most sought-after pieces, carefully curated to keep you ahead of the trends. Fresh styles just landed – shop before they're gone!
       </p>
       </div>
@@ -30,7 +30,7 @@ function LatestCollection() {
       <div className="grid base:grid-cols-2 max-sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-5 gap-5">
         {latestProducts?.slice(0,10).map((product, index)=>(
           <div>
-            <ProductItem name={product.name} price={product.price} key={index} imgURL={product.image} productId={product._id} />
+            <ProductItem name={product.name} price={product.price} key={index} imgURL={product.image} productId={product._id} category={product.category} />
           </div>
         ))}
       </div>

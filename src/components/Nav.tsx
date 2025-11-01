@@ -5,7 +5,8 @@ import storeLogo from '../assets/store logo.svg'
 import { BsSearch } from 'react-icons/bs'
 import { CgClose, CgProfile } from 'react-icons/cg'
 import { BiCart, BiMenu } from 'react-icons/bi'
-import { useState } from 'react'
+import { useContext, useState } from 'react'
+import { ShopContext } from '../context/ShopContext'
 
 interface Props{
     onClickSearch:()=>void
@@ -13,10 +14,12 @@ interface Props{
 
 function Nav({onClickSearch}:Props) {
 
+    const items = useContext(ShopContext)
+
     const [visibility, setVisibility] = useState(false)
 
   return (
-    <nav className='flex justify-between items-center px-5 py-8 fixed bg-white w-full z-10'>
+    <nav className='flex justify-between items-center px-5 shadow-sm py-8 fixed bg-white w-full z-10'>
         <Link to={'/'}>
             <img src = {smLogo} alt="logo" className='max-sm:w-20 mb-px' />
             <img src = {storeLogo} alt="logo" className='max-sm:w-[78px] w-[95px]' />
@@ -87,7 +90,7 @@ function Nav({onClickSearch}:Props) {
                         font-semibold 
                         rounded-full 
                         text-[8px] '
-                >10</p>
+                >{items?.cartCount ?? 0}</p>
             </Link>
 
             <BiMenu 

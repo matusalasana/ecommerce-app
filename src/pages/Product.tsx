@@ -45,7 +45,19 @@ function Product() {
                   <p className="border border-gray-300 px-3 py-1 bg-gray-200">{size}</p>
                 ))}
               </div>
-              <button className="bg-orange-600 my-7 text-white px-3 py-2 rounded-md hover:bg-orange-700 cursor-pointer">ADD TO CART</button>
+              <button 
+                onClick={()=>items.addToCart(product._id)}
+                className="
+                bg-orange-600 
+                my-7 
+                text-white 
+                px-3 py-2 
+                rounded-md 
+                hover:bg-orange-700 
+                cursor-pointer"
+              >
+                ADD TO CART
+              </button>
               <hr className="h-px border-none bg-gray-300"/>
               <p className="mt-5 text-sm text-gray-600 w-xs">100% Original product.</p>
               <p className="text-sm text-gray-600 w-xs">Cash on delivery is available on this product.</p>
@@ -57,7 +69,7 @@ function Product() {
       <div className="mt-10">
         <Title text1="RELATED" text2="PRODUCTS"/>
         <div className="grid base:grid-cols-2 max-sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-5 gap-5">
-          {items?.products.filter(item=>item.category == category).map((product)=>(
+          {items?.products.filter(item=>item.category == category).filter(i=>i._id!==productId).map((product)=>(
             <div>
               <ProductItem name={product.name} productId={product._id} imgURL={product.image} price={product.price} category={product.category}/>
             </div>
