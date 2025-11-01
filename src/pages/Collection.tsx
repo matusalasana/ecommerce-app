@@ -61,43 +61,51 @@ function Collection({ status, onClickClose }: Props) {
     return (
         <div className="bg-gray-50 min-h-screen">
 
-            {/* Fixed Search Bar - Compact Version */}
-<div className={`
-    fixed top-0 left-0 right-0 pt-10 bg-white border-b border-gray-200 z-40 transition-all duration-300
-    ${status === 'block' ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0 pointer-events-none'}
-`}>
-    <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
-            {/* Search Input */}
-            <div className="flex-1 max-w-md mx-auto">
-                <div className="relative">
-                    <BiSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" size={18} />
-                    <input
-                        type="text"
-                        value={searchText}
-                        onChange={(e) => setSearchText(e.target.value)}
-                        placeholder="Search products..."
-                        className="w-full pl-10 pr-10 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                        autoFocus
-                    />
-                    <button
-                        onClick={() => {
-                            onClickClose()
-                            setSearchText('')
-                        }}
-                        className="absolute right-2 top-0 transform translate-y-1/2 text-red-400 hover:text-red-600"
-                    >
-                        <CgClose size={18} />
-                    </button>
+            {/* Fixed Search Bar - Below Navbar */}
+            <div className={`
+                fixed top-20 left-0 right-0 bg-white border-b border-gray-200 z-40 transition-all duration-300
+                ${status === 'block' ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0 pointer-events-none'}
+            `}>
+                <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+                    <div className="flex items-center justify-between py-4">
+                        {/* Search Input */}
+                        <div className="flex-1 max-w-2xl mx-auto">
+                            <div className="relative">
+                                <BiSearch className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400" size={20} />
+                                <input
+                                    type="text"
+                                    value={searchText}
+                                    onChange={(e) => setSearchText(e.target.value)}
+                                    placeholder="Search products..."
+                                    className="w-full pl-12 pr-12 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-lg"
+                                    autoFocus
+                                />
+                                {searchText && (
+                                    <button
+                                        onClick={() => setSearchText('')}
+                                        className="absolute right-12 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600"
+                                    >
+                                        <CgClose size={20} />
+                                    </button>
+                                )}
+                                <button
+                                    onClick={() => {
+                                        onClickClose()
+                                        setSearchText('')
+                                    }}
+                                    className="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600"
+                                >
+                                    <CgClose size={20} />
+                                </button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </div>
-</div>
 
-            {/* Main Content */}
-            <div className={`pt-24 container mx-auto px-4 sm:px-6 lg:px-8 transition-all duration-300 ${
-                status === 'block' ? 'mt-20' : ''
+            {/* Main Content - Adjust padding based on search state */}
+            <div className={`container mx-auto px-4 sm:px-6 lg:px-8 transition-all duration-300 ${
+                status === 'block' ? 'pt-40' : 'pt-24'
             }`}>
                 {/* Header */}
                 <div className="text-center mb-8">
@@ -161,7 +169,7 @@ function Collection({ status, onClickClose }: Props) {
                         ${isFilterOpen ? 'block' : 'hidden'} 
                         lg:block w-full lg:w-80 shrink-0
                     `}>
-                        <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 space-y-6 sticky top-24">
+                        <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 space-y-6 sticky top-32">
                             {/* Header */}
                             <div className="flex items-center justify-between">
                                 <h3 className="text-lg font-semibold text-gray-900">Filters</h3>
