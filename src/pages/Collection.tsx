@@ -1,3 +1,4 @@
+
 import { useContext, useState } from "react"
 import { ShopContext } from "../context/ShopContext"
 import ProductItem from "../components/ProductItem"
@@ -13,6 +14,7 @@ interface Props {
 }
 
 function Collection({ status, onClickClose }: Props) {
+
     const items = useContext(ShopContext)
     const [isFilterOpen, setIsFilterOpen] = useState(false)
     const [searchText, setSearchText] = useState('')
@@ -26,7 +28,7 @@ function Collection({ status, onClickClose }: Props) {
     const toggleCategory = (category: string) => {
         setSelectedCategories(prev =>
             prev.includes(category)
-                ? prev.filter(c => c !== category)
+                ? prev.filter(c => c == category)
                 : [...prev, category]
         )
     }
@@ -44,8 +46,7 @@ function Collection({ status, onClickClose }: Props) {
         setSelectedTypes([])
         setSearchText('')
     }
-
-    // Filter products based on search and filters
+    
     const filteredProducts = items?.products.filter(product => {
         const matchesSearch = product.name.toLowerCase().includes(searchText.toLowerCase())
         const matchesCategory = selectedCategories.length === 0 || selectedCategories.includes(product.category)
@@ -61,7 +62,7 @@ function Collection({ status, onClickClose }: Props) {
     return (
         <div className="bg-gray-50 min-h-screen">
 
-            {/* Fixed Search Bar - Below Navbar */}
+            {/* Search Bar */}
             <div className={`
                 fixed top-20 left-0 right-0 bg-white border-b border-gray-200 z-40 transition-all duration-300
                 ${status === 'block' ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0 pointer-events-none'}
