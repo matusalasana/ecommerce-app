@@ -3,7 +3,7 @@ import newArrivals from '../assets/New-Arrival-High-Quality-Male-Jacket.jpeg';
 
 function Hero() {
   return (
-    <section className="relative min-h-[80vh] flex items-center justify-center px-5 sm:px-6 lg:px-8 overflow-hidden pt-10">
+    <section className="relative min-h-[80vh] flex items-center justify-center px-5 sm:px-6 lg:px-8 overflow-hidden pt-30">
       <div className="container mx-auto max-w-7xl">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
           
@@ -11,18 +11,18 @@ function Hero() {
           <div className="text-center lg:text-left space-y-6 lg:space-y-8 order-2 lg:order-1 animate-fade-in">
             {/* Badge */}
             <div className="flex items-center justify-center lg:justify-start gap-3">
-              <div className="w-10 h-0.5 bg-orange-500"></div>
+              <div className="w-10 h-0.5 bg-blue-500"></div>
               <span className="text-sm font-medium text-gray-500 tracking-wider uppercase">
                 Our Bestsellers
               </span>
-              <div className="w-10 h-0.5 bg-orange-500"></div>
+              <div className="w-10 h-0.5 bg-blue-500"></div>
             </div>
 
             {/* Main Heading */}
             <div className="space-y-4">
               <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-gray-900 leading-tight">
                 New{' '}
-                <span className="text-orange-600 bg-linear-to-r from-orange-600 to-red-600 bg-clip-text">
+                <span className="text-blue-600 bg-linear-to-r from-blue-600 to-red-600 bg-clip-text">
                   Arrivals
                 </span>
               </h1>
@@ -33,7 +33,7 @@ function Hero() {
 
             {/* CTA Section */}
             <div className="flex flex-col sm:flex-row items-center gap-4 lg:justify-start justify-center">
-              <button className="group relative bg-orange-600 hover:bg-orange-700 text-white font-semibold py-4 px-8 rounded-xl transition-all duration-300 transform hover:scale-105 hover:shadow-2xl shadow-lg">
+              <button className="group relative bg-blue-600 hover:bg-blue-700 text-white font-semibold py-4 px-8 rounded-xl transition-all duration-300 transform hover:scale-105 hover:shadow-2xl shadow-lg">
                 <span className="flex items-center gap-2">
                   Shop Now
                   <svg 
@@ -48,7 +48,7 @@ function Hero() {
               </button>
               
               <Link to={'/collection'}>
-                <button className="group border-2 border-gray-300 hover:border-orange-600 text-gray-700 hover:text-orange-600 font-medium py-4 px-8 rounded-xl transition-all duration-300">
+                <button className="group border-2 border-gray-300 hover:border-blue-600 text-gray-700 hover:text-blue-600 font-medium py-4 px-8 rounded-xl transition-all duration-300">
                   <span className="flex items-center gap-2">
                     View Collection
                     <svg 
@@ -97,11 +97,11 @@ function Hero() {
               </div>
               
               {/* Floating Elements */}
-              <div className="absolute -top-4 -right-4 bg-white rounded-2xl shadow-xl p-4 animate-pulse">
+              <div className="absolute -top-4 -right-4 bg-linear-to-b from-blue-300 to-blue-500 rounded-2xl shadow-black shadow-sm p-4 animate-pulse">
                 <div className="text-sm font-semibold text-gray-900">🔥 Hot Item</div>
               </div>
               
-              <div className="absolute -bottom-4 -left-4 bg-orange-600 text-white rounded-2xl shadow-xl p-4">
+              <div className="absolute bottom-0 -left-4 bg-blue-600 text-white rounded-2xl shadow-xl p-4">
                 <div className="text-sm font-semibold">New Season</div>
               </div>
             </div>
@@ -111,7 +111,7 @@ function Hero() {
       </div>
 
       {/* Background Decorative Elements */}
-      <div className="absolute top-0 left-0 w-72 h-72 bg-orange-100 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob"></div>
+      <div className="absolute top-0 left-0 w-72 h-72 bg-blue-100 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob"></div>
       <div className="absolute top-0 right-0 w-72 h-72 bg-blue-100 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-2000"></div>
       <div className="absolute bottom-0 left-1/2 w-72 h-72 bg-gray-100 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-4000"></div>
     </section>

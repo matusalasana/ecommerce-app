@@ -1,3 +1,4 @@
+import { Trash } from "lucide-react";
 
 interface CartBoxProps {
   name: string;
@@ -29,9 +30,9 @@ function CartBox({ name, price, imgURL, category, productId, removeCart, quantit
       
       <button 
         onClick={() => removeCart(productId)}
-        className="text-red-500 hover:text-red-700 px-3 py-1 border border-red-300 rounded hover:bg-red-50 transition-colors"
+        className="text-red-500 hover:text-red-700 px-3 py-1 cursor-pointer rounded"
       >
-        Remove
+        <Trash />
       </button>
     </div>
   )

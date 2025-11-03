@@ -133,7 +133,7 @@ function Product() {
                     onClick={() => setSelectedSize(size)}
                     className={`px-6 py-3 border-2 rounded-xl font-medium transition-all duration-200 ${
                       selectedSize === size
-                        ? 'border-orange-600 bg-orange-50'
+                        ? 'border-blue-600 bg-blue-50'
                         : 'border-gray-200 hover:border-gray-300 text-gray-700'
                     }`}
                   >
@@ -165,7 +165,7 @@ function Product() {
                 <div className="flex gap-3 flex-1">
                   <button 
                     onClick={() => items?.addToCart(product._id)}
-                    className="flex-1 bg-orange-600 hover:bg-orange-700 text-white font-semibold py-3 px-6 rounded-xl transition-all duration-200 transform hover:scale-105 flex items-center justify-center gap-2 shadow-lg hover:shadow-xl"
+                    className="flex-1 bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-xl transition-all duration-200 transform hover:scale-105 flex items-center justify-center gap-2 shadow-lg hover:shadow-xl"
                   >
                     <ShoppingBag size={20} />
                     Add to Cart

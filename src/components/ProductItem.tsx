@@ -1,6 +1,7 @@
 import { useContext } from "react"
 import { ShopContext } from "../context/ShopContext"
 import { Link } from "react-router-dom"
+import { ShoppingBag } from "lucide-react";
 
 interface Props {
     name: string;
@@ -35,7 +36,7 @@ function ProductItem({ name, productId, imgURL, price, category }: Props) {
                 <div className="p-4 flex-1 flex flex-col">
                     {/* Product Info */}
                     <div className="flex-1 mb-3">
-                        <h3 className="font-semibold text-gray-900 mb-2 line-clamp-2 group-hover:text-blue-600 transition-colors">
+                        <h3 className="font-semibold text-gray-900 mb-2 line-clamp-1 group-hover:text-blue-600 transition-colors">
                             {name}
                         </h3>
                         <p className="text-xl font-bold text-gray-900">
@@ -49,10 +50,10 @@ function ProductItem({ name, productId, imgURL, price, category }: Props) {
                             e.preventDefault();
                             item?.addToCart(productId)
                         }}
-                        className="w-full bg-orange-600 hover:bg-orange-700 text-white font-semibold py-3 rounded-lg transition-all duration-200 flex items-center justify-center gap-2 group-hover:shadow-lg"
+                        className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold text-sm py-3 rounded-lg transition-all duration-200 flex items-center justify-center gap-2 group-hover:shadow-lg"
                     >
+                        <ShoppingBag size={20} />
                         <span>Add to Cart</span>
-                        <span className="group-hover:translate-x-1 transition-transform duration-200">→</span>
                     </button>
                 </div>
             </div>

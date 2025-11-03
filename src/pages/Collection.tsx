@@ -1,6 +1,6 @@
 
-import { useContext, useState } from "react"
-import { ShopContext } from "../context/ShopContext"
+import { useState } from "react"
+import { useShop } from "../context/ShopContext"
 import ProductItem from "../components/ProductItem"
 import Title from "../components/Title"
 import Footer from "../components/Footer"
@@ -15,7 +15,7 @@ interface Props {
 
 function Collection({ status, onClickClose }: Props) {
 
-    const items = useContext(ShopContext)
+    const items = useShop();
     const [isFilterOpen, setIsFilterOpen] = useState(false)
     const [searchText, setSearchText] = useState('')
     const [selectedCategories, setSelectedCategories] = useState<string[]>([])

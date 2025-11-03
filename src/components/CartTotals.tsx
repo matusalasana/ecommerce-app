@@ -23,24 +23,24 @@ function CartTotals({ currency, totalPrice, shippingFee, subTotal }: Props) {
                     <p className="font-semibold">{currency}{subTotal.toFixed(2)}</p>
                 </div>
 
-                <hr className="border-gray-400"/>
+                <hr className="border-gray-300"/>
                 
                 <div className="flex justify-between items-center pb-3">
                     <p className="text-gray-600">Shipping Fee</p>
                     <p className="font-semibold">{currency}{shippingFee.toFixed(2)}</p>
                 </div>
 
-                <hr className="border-gray-400"/>
+                <hr className="border-gray-300"/>
                 
                 {/* Total */}
                 <div className="flex justify-between items-center pt-2">
                     <p className="font-bold text-lg">Total</p>
-                    <p className="font-bold text-lg text-blue-600">{currency}{totalPrice.toFixed(2)}</p>
+                    <p className="font-bold text-lg text-orange-600">{currency}{totalPrice.toFixed(2)}</p>
                 </div>
                 
                 {/* Checkout Button */}
                 <Link to={'/place-order'}>
-                    <button className="px-6 py-3 w-full mt-4 rounded-lg cursor-pointer hover:bg-orange-700 bg-orange-600 text-white font-semibold transition-colors duration-200">
+                    <button className="px-6 py-3 w-full mt-4 rounded-lg cursor-pointer hover:bg-blue-700 bg-blue-600 text-white font-semibold transition-colors duration-200">
                         PROCEED TO CHECKOUT
                     </button>
                 </Link>

@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom"
 import { BiCopyright, BiPhone, BiEnvelope } from "react-icons/bi"
-import smLogo from "../assets/sm logo.svg"
+import smLogo from "../assets/SMblue.svg"
 import storeLogo from '../assets/store logo white.svg'
 
 function Footer() {

@@ -1,6 +1,6 @@
 
 import { Link, NavLink } from 'react-router-dom'
-import smLogo from '../assets/sm logo.svg'
+import smLogo from '../assets/SMblue.svg'
 import storeLogo from '../assets/store logo.svg'
 import { BsSearch } from 'react-icons/bs'
 import { CgProfile } from 'react-icons/cg'
@@ -18,7 +18,7 @@ function Nav({onClickSearch}:Props) {
     const items = useContext(ShopContext)
 
   return (
-    <nav className='flex justify-between items-center px-5 shadow-sm py-8 fixed bg-white w-full z-10'>
+    <nav className='flex bg-linear-to-r from-gray-200 to-gray-100 justify-between items-center px-5 shadow-sm py-8 fixed w-full z-10'>
         <Link to={'/'}>
             <img src = {smLogo} alt="logo" className='max-sm:w-20 mb-px' />
             <img src = {storeLogo} alt="logo" className='max-sm:w-[78px] w-[95px]' />
@@ -67,9 +67,9 @@ function Nav({onClickSearch}:Props) {
                         bg-slate-200 
                         text-slate-500'
                 >
-                    <p className='cursor-pointer hover:text-black'>Profile</p>
-                    <p className='cursor-pointer hover:text-black'>Order</p>
-                    <p className='cursor-pointer hover:text-black'>Log out</p>
+                    <p className='cursor-pointer hover:text-black'><Link to="/profile">Profile</Link></p>
+                    <p className='cursor-pointer hover:text-black'><Link to="/orders">Orders</Link></p>
+                    <p className='cursor-pointer hover:text-black'><Link to="/">Log out</Link></p>
                 </div>
             </div>
 

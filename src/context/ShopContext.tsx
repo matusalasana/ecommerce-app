@@ -1,4 +1,4 @@
-import { createContext, useState, useEffect, type ReactNode } from "react";
+import { createContext, useState, useEffect, type ReactNode, useContext } from "react";
 import { products } from "../assets/assets";
 
 export interface Product {
@@ -23,7 +23,7 @@ export interface CartItem {
 export interface ShopContextType {
     currency: string;
     delivery_fee: number;
-    cart: CartItem[]; // Changed to track quantities and sizes
+    cart: CartItem[];
     products: Product[];
     addToCart: (productId: string, size?: string) => void;
     removeFromCart: (productId: string) => void;
@@ -37,7 +37,10 @@ export interface ShopContextType {
 
 export const ShopContext = createContext<ShopContextType | undefined>(undefined);
 
+
+
 function ShopContextProvider({ children }: { children: ReactNode }) {
+
     const currency = "$";
     const delivery_fee = 10;
     const [cart, setCart] = useState<CartItem[]>([]);
@@ -141,5 +144,5 @@ function ShopContextProvider({ children }: { children: ReactNode }) {
         </ShopContext.Provider>
     );
 }
-
+export const useShop = () => useContext(ShopContext);
 export default ShopContextProvider;
