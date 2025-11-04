@@ -13,6 +13,7 @@ import Error from "./pages/Error"
 import { useEffect, useState } from "react"
 import SignUp from "./pages/SignUp"
 import Profile from "./pages/Profile"
+import Terms from "./pages/Terms"
 
 function App() {
   const [searchVisibility, setSearchVisibility] = useState('hidden')
@@ -73,6 +74,9 @@ function App() {
             <Route  
               path="/orders" 
               element={<Orders />} />
+            <Route
+              path="/terms"
+              element= {<Terms />} />
             <Route  
               path="/404" 
               element={<Error />} />
