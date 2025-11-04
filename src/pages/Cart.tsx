@@ -4,6 +4,7 @@ import CartTotals from "../components/CartTotals"
 import Title from "../components/Title"
 import { ShopContext } from "../context/ShopContext"
 import Footer from "../components/Footer"
+import { Link } from "react-router-dom"
 
 function Cart() {
   const items = useContext(ShopContext)
@@ -50,10 +51,9 @@ function Cart() {
           <Title text1="YOUR" text2="CART" />
           <p className="text-gray-500 text-lg mt-4">Your cart is empty</p>
           <button 
-            onClick={() => window.history.back()}
             className="mt-4 bg-blue-500 text-white px-6 py-2 rounded hover:bg-blue-600"
           >
-            Continue Shopping
+            <Link to="/collection">Continue Shopping</Link>
           </button>
         </div>
       </div>
