@@ -1,7 +1,11 @@
 import { Link } from 'react-router-dom';
 import newArrivals from '../assets/New-Arrival-High-Quality-Male-Jacket.jpeg';
+import { useState } from 'react';
 
 function Hero() {
+
+  const [count, setCount] = useState(0)
+
   return (
     <section className="relative min-h-[80vh] flex items-center justify-center px-5 sm:px-6 lg:px-8 overflow-hidden pt-30">
       <div className="container mx-auto max-w-7xl">
@@ -29,6 +33,8 @@ function Hero() {
               <p className="text-lg sm:text-xl text-gray-600 max-w-lg mx-auto lg:mx-0 leading-relaxed">
                 Discover our premium collection of stylish jackets and outerwear for the modern man.
               </p>
+             <p> {count}</p>
+              <button onClick={()=>setCount(count+1)}>add</button>
             </div>
 
             {/* CTA Section */}

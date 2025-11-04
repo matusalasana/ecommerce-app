@@ -48,7 +48,7 @@ function ProductItem({ name, productId, imgURL, price, category }: Props) {
                     <button 
                         onClick={(e) => {
                             e.preventDefault();
-                            item?.addToCart(productId)
+                            item?.addToCart(productId);
                         }}
                         className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold text-sm py-3 rounded-lg transition-all duration-200 flex items-center justify-center gap-2 group-hover:shadow-lg"
                     >

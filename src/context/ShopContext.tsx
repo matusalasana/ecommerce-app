@@ -1,5 +1,12 @@
-import { createContext, useState, useEffect, type ReactNode, useContext } from "react";
-import { products } from "../assets/assets";
+
+import { 
+    createContext, 
+    useState, 
+    useEffect, 
+    type ReactNode, 
+    useContext
+} from "react";
+
 
 export interface Product {
     _id: string;
@@ -17,20 +24,22 @@ export interface Product {
 export interface CartItem {
     productId: string;
     quantity: number;
-    size?: string; // Added for size selection
 }
+
+import { products } from "../assets/assets";
+
 
 export interface ShopContextType {
     currency: string;
     delivery_fee: number;
-    cart: CartItem[];
-    products: Product[];
-    addToCart: (productId: string, size?: string) => void;
-    removeFromCart: (productId: string) => void;
-    clearCart: () => void;
-    updateQuantity: (productId: string, quantity: number) => void;
     cartCount: number;
     cartTotal: number;
+    cart: CartItem[];
+    products: Product[];
+    clearCart: () => void;
+    addToCart: (productId: string) => void;
+    removeFromCart: (productId: string) => void;
+    updateQuantity: (productId: string, quantity: number) => void;
     isInCart: (productId: string) => boolean;
     getProductQuantity: (productId: string) => number;
 }
@@ -45,41 +54,37 @@ function ShopContextProvider({ children }: { children: ReactNode }) {
     const delivery_fee = 10;
     const [cart, setCart] = useState<CartItem[]>([]);
 
-    // Load cart from localStorage on mount
-    useEffect(() => {
-        const savedCart = localStorage.getItem('shopping-cart');
-        if (savedCart) {
-            setCart(JSON.parse(savedCart));
+// Load cart from localStorage on mount
+useEffect(() => {
+    const savedCart = localStorage.getItem('shopping-cart');
+    if (savedCart) setCart(JSON.parse(savedCart));
+}, []);
+
+// Save cart to localStorage whenever cart changes
+useEffect(() => {
+    localStorage.setItem('shopping-cart', JSON.stringify(cart));
+}, [cart]);
+
+    // Add product to cart with its quantity
+    const addToCart = (productId:string) => {
+    setCart(prevCart => {
+        const existingItem = prevCart.find(item => item.productId === productId);
+        
+        if (existingItem) {
+            // Update quantity for existing item
+            existingItem.quantity += 1;
+            return [...prevCart];
+        } else {
+            // Add new item
+            return [...prevCart, { productId, quantity: 1 }];
         }
-    }, []);
-
-    // Save cart to localStorage whenever cart changes
-    useEffect(() => {
-        localStorage.setItem('shopping-cart', JSON.stringify(cart));
-    }, [cart]);
-
-    // Add product to cart with quantity and size support
-    const addToCart = (productId: string, size?: string) => {
-        setCart(prevCart => {
-            const existingItem = prevCart.find(item => item.productId === productId);
-            
-            if (existingItem) {
-                // Increase quantity if item already exists
-                return prevCart.map(item =>
-                    item.productId === productId
-                        ? { ...item, quantity: item.quantity + 1 }
-                        : item
-                );
-            } else {
-                // Add new item to cart
-                return [...prevCart, { productId, quantity: 1, size }];
-            }
-        });
-    };
+    });
+};
 
     // Remove product from cart
     const removeFromCart = (productId: string) => {
         setCart(prevCart => prevCart.filter(item => item.productId !== productId));
+        localStorage.removeItem('shopping-cart')
     };
 
     // Update product quantity
@@ -115,7 +120,7 @@ function ShopContextProvider({ children }: { children: ReactNode }) {
     };
 
     // Calculate total items in cart (sum of quantities)
-    const cartCount = cart.reduce((total, item) => total + item.quantity, 0);
+    const cartCount = cart.length;
 
     // Calculate total cart value
     const cartTotal = cart.reduce((total, cartItem) => {
