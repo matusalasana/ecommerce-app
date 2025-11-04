@@ -39,15 +39,6 @@ function Cart() {
     }
   }
 
-  // NEW: Handle quantity updates
-  const handleQuantityChange = (productId: string, newQuantity: number) => {
-    if (items?.updateQuantity) {
-      items.updateQuantity(productId, newQuantity)
-    } else {
-      console.warn("updateQuantity not implemented in ShopContext")
-    }
-  }
-
   const shippingFee = items?.delivery_fee || 10
   const totalPrice = subTotal + shippingFee
 
@@ -73,7 +64,7 @@ function Cart() {
     <div className="pt-30 min-h-screen bg-gray-50">
       <div className="container mx-auto px-4 py-8">
         <Title text1="YOUR" text2="CART" />
-        
+        <p className="text-red-500 font-semibold hover:font-bold hover:text-red-700 cursor-pointer" onClick={() => items?.clearCart()}>Cear All</p>
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mt-8">
           {/* Cart Items */}
           <div className="lg:col-span-2 space-y-4">
@@ -87,7 +78,6 @@ function Cart() {
                 productId={product._id}
                 removeCart={handleRemove}
                 quantity={product.quantity} // FIXED: Now uses actual quantity
-                updateQuantity={handleQuantityChange} // NEW: Pass quantity update function
               />
             ))}
           </div>

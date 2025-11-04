@@ -1,20 +1,20 @@
-import { useContext, useEffect, useState } from "react"
-import { ShopContext, type Product } from "../context/ShopContext"
+
+import { useEffect, useState } from "react"
+import { useShop, type Product } from "../context/ShopContext"
 import Title from "./Title"
 import ProductItem from "./ProductItem"
 
 
 function BestSellers() {
 
-  const items  = useContext(ShopContext)
-  
-  if (!items) return null
-  console.log(items)
+  const shop = useShop()
+  if (!shop) return null
+  const { products } = shop
 
   const [latestProducts, setLatestProducts] = useState<Product[]>()
 
   useEffect(() => {
-    setLatestProducts(items.products)
+    setLatestProducts(products)
   },[])
 
   return (

@@ -39,9 +39,6 @@ export interface ShopContextType {
     clearCart: () => void;
     addToCart: (productId: string) => void;
     removeFromCart: (productId: string) => void;
-    updateQuantity: (productId: string, quantity: number) => void;
-    isInCart: (productId: string) => boolean;
-    getProductQuantity: (productId: string) => number;
 }
 
 export const ShopContext = createContext<ShopContextType | undefined>(undefined);
@@ -87,45 +84,22 @@ useEffect(() => {
         localStorage.removeItem('shopping-cart')
     };
 
-    // Update product quantity
-    const updateQuantity = (productId: string, quantity: number) => {
-        if (quantity <= 0) {
-            removeFromCart(productId);
-            return;
-        }
-
-        setCart(prevCart =>
-            prevCart.map(item =>
-                item.productId === productId
-                    ? { ...item, quantity }
-                    : item
-            )
-        );
-    };
 
     // Clear entire cart
     const clearCart = () => {
         setCart([]);
+        localStorage.clear()
     };
 
-    // Check if product is in cart
-    const isInCart = (productId: string): boolean => {
-        return cart.some(item => item.productId === productId);
-    };
-
-    // Get quantity of specific product in cart
-    const getProductQuantity = (productId: string): number => {
-        const item = cart.find(cartItem => cartItem.productId === productId);
-        return item ? item.quantity : 0;
-    };
 
     // Calculate total items in cart (sum of quantities)
     const cartCount = cart.length;
 
+
     // Calculate total cart value
     const cartTotal = cart.reduce((total, cartItem) => {
-        const product = products.find(p => p._id === cartItem.productId);
-        return total + (product ? product.price * cartItem.quantity : 0);
+        const price = products.find(p => p._id === cartItem.productId)?.price || 0;
+        return (total + price) * cartItem.quantity ;
     }, 0);
 
     const contextValue: ShopContextType = {
@@ -136,11 +110,8 @@ useEffect(() => {
         addToCart,
         removeFromCart,
         clearCart,
-        updateQuantity,
         cartCount,
         cartTotal,
-        isInCart,
-        getProductQuantity
     };
 
     return (
