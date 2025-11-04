@@ -11,7 +11,7 @@ function Hero() {
       <div className="container mx-auto max-w-7xl">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
           
-          {/* Hero Content - Left Side */}
+          {/* Hero Left Side */}
           <div className="text-center lg:text-left space-y-6 lg:space-y-8 order-2 lg:order-1 animate-fade-in">
             {/* Badge */}
             <div className="flex items-center justify-center lg:justify-start gap-3">
@@ -87,7 +87,7 @@ function Hero() {
             </div>
           </div>
 
-          {/* Hero Image - Right Side */}
+          {/* Hero - Right Side */}
           <div className="order-1 lg:order-2 relative animate-float">
             <div className="relative">
               {/* Main Image Container */}

@@ -5,15 +5,15 @@ const Terms = () => {
         <div>    
             <div className="min-h-screen bg-gray-50 py-8 px-4 pt-30 sm:px-6 lg:px-8">
                 <div className="max-w-4xl mx-auto bg-white rounded-lg shadow-md overflow-hidden">
-                    {/* Header */}
+                    
                     <div className="bg-linear-to-r from-blue-600 to-purple-600 px-6 py-8 text-white">
                         <h1 className="text-4xl font-bold text-center mb-2">Terms & Conditions</h1>
                         <p className="text-center text-blue-100">Last updated: {new Date().toLocaleDateString()}</p>
                     </div>
 
-                    {/* Terms Content */}
+                    
                     <div className="px-6 py-8 space-y-8">
-                        {/* Introduction */}
+                        
                         <div className="text-gray-600 leading-relaxed">
                             <p className="mb-4">
                                 Welcome to SMstore. Please read these terms and conditions carefully before using our website 
@@ -21,7 +21,7 @@ const Terms = () => {
                             </p>
                         </div>
 
-                        {/* Section 1 */}
+                        
                         <div className="space-y-4">
                             <h2 className="text-2xl font-semibold text-gray-800 border-l-4 border-blue-500 pl-4">
                                 1. Acceptance of Terms
@@ -32,7 +32,7 @@ const Terms = () => {
                             </p>
                         </div>
 
-                        {/* Section 2 */}
+                        
                         <div className="space-y-4">
                             <h2 className="text-2xl font-semibold text-gray-800 border-l-4 border-blue-500 pl-4">
                                 2. Account Registration
@@ -43,7 +43,7 @@ const Terms = () => {
                             </p>
                         </div>
 
-                        {/* Section 3 */}
+                        
                         <div className="space-y-4">
                             <h2 className="text-2xl font-semibold text-gray-800 border-l-4 border-blue-500 pl-4">
                                 3. Products and Pricing
@@ -54,7 +54,7 @@ const Terms = () => {
                             </p>
                         </div>
 
-                        {/* Section 4 */}
+                        
                         <div className="space-y-4">
                             <h2 className="text-2xl font-semibold text-gray-800 border-l-4 border-blue-500 pl-4">
                                 4. Payment Methods
@@ -65,7 +65,7 @@ const Terms = () => {
                             </p>
                         </div>
 
-                        {/* Section 5 */}
+                        
                         <div className="space-y-4">
                             <h2 className="text-2xl font-semibold text-gray-800 border-l-4 border-blue-500 pl-4">
                                 5. Shipping & Delivery
@@ -76,7 +76,7 @@ const Terms = () => {
                             </p>
                         </div>
 
-                        {/* Section 6 */}
+                        
                         <div className="space-y-4">
                             <h2 className="text-2xl font-semibold text-gray-800 border-l-4 border-blue-500 pl-4">
                                 6. Returns & Refunds
@@ -87,7 +87,7 @@ const Terms = () => {
                             </p>
                         </div>
 
-                        {/* Section 7 */}
+                        
                         <div className="space-y-4">
                             <h2 className="text-2xl font-semibold text-gray-800 border-l-4 border-blue-500 pl-4">
                                 7. Intellectual Property
@@ -98,7 +98,7 @@ const Terms = () => {
                             </p>
                         </div>
 
-                        {/* Section 8 */}
+                        
                         <div className="space-y-4">
                             <h2 className="text-2xl font-semibold text-gray-800 border-l-4 border-blue-500 pl-4">
                                 8. Limitation of Liability
@@ -109,7 +109,7 @@ const Terms = () => {
                             </p>
                         </div>
 
-                        {/* Section 9 */}
+                        
                         <div className="space-y-4">
                             <h2 className="text-2xl font-semibold text-gray-800 border-l-4 border-blue-500 pl-4">
                                 9. Governing Law
@@ -120,7 +120,7 @@ const Terms = () => {
                             </p>
                         </div>
 
-                        {/* Section 10 */}
+                        
                         <div className="space-y-4">
                             <h2 className="text-2xl font-semibold text-gray-800 border-l-4 border-blue-500 pl-4">
                                 10. Contact Information
@@ -135,7 +135,7 @@ const Terms = () => {
                             </div>
                         </div>
 
-                        {/* Acceptance Note */}
+                        
                         <div className="bg-yellow-50 border-l-4 border-yellow-400 p-4 mt-8">
                             <p className="text-yellow-700">
                                 <strong>Note:</strong> By using our website, you acknowledge that you have read, understood, 
