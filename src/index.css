@@ -5,7 +5,7 @@ a.active hr {
 }
 
 
-a.active > .sm-device-menu{
+a.active > .bb{
     font-weight: bold;
     background-color: gray;
     color: white;

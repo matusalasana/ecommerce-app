@@ -1,20 +1,21 @@
-import { useContext, useEffect, useState } from "react"
-import { ShopContext, type Product } from "../context/ShopContext"
+import { useEffect, useState } from "react"
+import { useShop, type Product } from "../context/ShopContext"
 import Title from "./Title"
 import ProductItem from "./ProductItem"
 
 
 function LatestCollection() {
 
-  const items  = useContext(ShopContext)
+  const items  = useShop()
   
   if (!items) return null
-  console.log(items)
+
+  const {products} = items
 
   const [latestProducts, setLatestProducts] = useState<Product[]>()
 
   useEffect(() => {
-    setLatestProducts(items.products)
+    setLatestProducts(products)
   },[])
 
   return (

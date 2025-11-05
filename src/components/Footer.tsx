@@ -11,7 +11,7 @@ function Footer() {
       <div className="max-w-6xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           
-          {/* Brand Section */}
+          
           <div className="space-y-4">
             <div className="flex flex-col items-center gap-1">
               <img src={smLogo} alt="SM Logo" className="h-8" />
@@ -23,7 +23,7 @@ function Footer() {
             </p>
           </div>
 
-          {/* Company Links */}
+          
           <div className="space-y-4">
             <h3 className="text-white font-semibold text-lg">COMPANY</h3>
             <div className="space-y-2 text-sm">
@@ -34,7 +34,7 @@ function Footer() {
             </div>
           </div>
 
-          {/* Contact Info */}
+         
           <div className="space-y-4">
             <h3 className="text-white font-semibold text-lg">GET IN TOUCH</h3>
             <div className="space-y-3 text-sm">
@@ -55,7 +55,7 @@ function Footer() {
           </div>
         </div>
 
-        {/* Bottom Section */}
+        
         <div className="border-t border-gray-800 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
           <div className="flex items-center gap-2 text-sm">
             <BiCopyright className="w-4 h-4" />
