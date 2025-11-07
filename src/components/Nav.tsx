@@ -83,7 +83,7 @@ function Nav({onClickSearch}:Props) {
                         w-4
                         text-center
                         leading-4
-                        bg-black 
+                        bg-red-600 
                         text-white 
                         aspect-square
                         font-semibold 

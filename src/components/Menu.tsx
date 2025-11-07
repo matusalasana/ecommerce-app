@@ -1,15 +1,13 @@
-import { useState } from "react"
-import { Link } from "react-router-dom"
+import { Link, useLocation } from "react-router-dom"
 import { CgClose, CgProfile } from "react-icons/cg"
-import { BiCart, BiHome, BiCollection, BiPhone } from "react-icons/bi"
+import { BiCart, BiHome, BiCollection, BiPhone, BiUser } from "react-icons/bi"
 import { FiHeart, FiShoppingBag, FiInfo } from "react-icons/fi"
-import { useContext } from "react"
-import { ShopContext } from "../context/ShopContext"
-import { Phone } from "lucide-react"
+import { MenuIcon, Phone } from "lucide-react"
+import { useState } from "react"
 
 function Menu() {
-  const [isOpen, setIsOpen] = useState(false)
-  const items = useContext(ShopContext)
+
+  const location = useLocation();
 
   const navigationItems = [
     { path: "/", label: "Home", icon: BiHome },
@@ -24,10 +22,18 @@ function Menu() {
     { path: "/orders", label: "Orders", icon: FiShoppingBag },
   ]
 
+  const quickActionItems = [
+    { path: "/cart", label: "Cart", icon: BiCart },
+    { path: "/login", label: "Login", icon: BiUser },
+  ]
+
+  const [isOpen, setIsOpen] = useState('hidden');
+
 
   return (
     <>
-      <div className="flex flex-col gap-5 fixed top-0 right-0 z-50 h-screen overflow-y-scroll bg-white w-80 px-5 py-10">
+    <MenuIcon onClick={() => setIsOpen('block')} />
+      <div className = {`${isOpen} flex flex-col gap-5 fixed top-0 right-0 z-50 h-screen overflow-y-scroll bg-white w-80 px-5 py-10`}>
 
 
         <div className="flex justify-between items-center static">
@@ -38,19 +44,28 @@ function Menu() {
               <p className="text-gray-600">Welcome back!</p>
             </div>
           </div>
-          <CgClose size={25} className="hover:text-gray-700 text-gray-500 cursor-pointer" />
+          <CgClose onClick={() => setIsOpen('hidden')} size={25} className="hover:text-gray-700 text-gray-500 cursor-pointer" />
         </div>
         <hr className="border-gray-300" />
 
 
-        <div className="flex flex-col gap-5">
+        <div className="flex flex-col gap-3">
           <p className="text-gray-600 font-semibold mt-5">NAVIGATION</p>
           {navigationItems.map((item, index) => {
+
             const Icon = item.icon
+            const isActive = location.pathname === item.path
+
             return (
-                <Link to={item.path} key={index} className="flex items-center gap-3 text-gray-700 font-semibold hover:text-blue-600">
-                  <Icon size={20} />
-                  <p className="bb">{item.label}</p>
+                <Link to={item.path} key={index} className={`flex justify-between items-center  font-semibold transition-colors duration-200 p-2 rounded-lg
+                  ${isActive 
+                    ? 'text-blue-600 bg-blue-50 border-blue-600' 
+                    : 'text-gray-700 hover:text-blue-600 hover:bg-gray-50' } `}>
+                  <div className="flex gap-3">
+                    <Icon size={20} />
+                    <p className="bb">{item.label}</p>
+                  </div>
+                  <p className= {`h-2 w-2 bg-blue-400 rounded-full ${isActive ? 'block' : 'hidden'} `}></p>
                 </Link>
             )
           })}
@@ -59,34 +74,54 @@ function Menu() {
 
         <div className="flex flex-col gap-5">
           <p className="text-gray-600 font-semibold mt-5">ACCOUNT</p>
-            {accountItems.map((item) => {
+            {accountItems.map((item, index) => {
 
               const Icon = item.icon
+              const isActive = location.pathname === item.path
 
               return (
-                <Link to = {item.path} className="flex items-center gap-3 text-gray-700 font-semibold hover:text-blue-600" >
-                  <Icon size={20} />
-                  <p>{item.label}</p>
+                <Link to={item.path} key={index} className={`flex justify-between items-center  font-semibold transition-colors duration-200 p-2 rounded-lg
+                  ${isActive 
+                    ? 'text-blue-600 bg-blue-50 border-blue-600' 
+                    : 'text-gray-700 hover:text-blue-600 hover:bg-gray-50' } `}>
+                  <div className="flex gap-3">
+                    <Icon size={20} />
+                    <p>{item.label}</p>
+                  </div>
+                  <p className= {`h-2 w-2 bg-blue-400 rounded-full ${isActive ? 'block' : 'hidden'} `}></p>
                 </Link>
               )
             })}
         </div>
 
 
-        <div className="flex flex-col gap-5">
-            <p className="text-gray-600 font-semibold mt-5">QUICK ACTIONS</p>
-                <Link to={'/cart'} className="relative flex items-center gap-3 text-gray-700 font-semibold hover:text-blue-600">
-                  <BiCart size={30} />
-                  <p >Cart</p>
-                  <p className="absolute -bottom-1 left-4 bg-red-600 text-center leading-4 w-4 h-4 font-semibold text-white text-[12px] rounded-full">{items?.cartCount}</p>
+        <div className="flex flex-col gap-3">
+          <p className="text-gray-600 font-semibold mt-5">NAVIGATION</p>
+          {quickActionItems.map((item, index) => {
+
+            const Icon = item.icon
+            const isActive = location.pathname === item.path
+
+            return (
+                <Link to={item.path} key={index} className={`flex justify-between items-center  font-semibold transition-colors duration-200 p-2 rounded-lg
+                  ${isActive 
+                    ? 'text-blue-600 bg-blue-50 border-blue-600' 
+                    : 'text-gray-700 hover:text-blue-600 hover:bg-gray-50' } `}>
+                  <div className="flex gap-3">
+                    <Icon size={20} />
+                    <p className="bb">{item.label}</p>
+                  </div>
+                  <p className= {`h-2 w-2 bg-blue-400 rounded-full ${isActive ? 'block' : 'hidden'} `}></p>
                 </Link>
+            )
+          })}
         </div>
 
 
         <div className="flex flex-col gap-5">
           <p className="text-gray-600 font-semibold mt-5">SUPPORT</p>
           <div className="flex items-center gap-3 cursor-pointer">
-            <Phone color="green" className="bg-gray-300 w-10 h-10 p-2"/>
+            <Phone color="green" className="bg-gray-100 w-10 h-10 p-2 rounded-lg"/>
             <div>
               <p className="text-gray-700 font-semibold">Call Support</p>
               <p className="text-gray-700">+251-945807386</p>
