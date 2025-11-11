@@ -27,7 +27,7 @@ function BestSellers() {
       </p>
       </div>
     
-      <div className="grid base:grid-cols-2 max-sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-5 gap-5">
+      <div className="grid grid-cols-3 max-sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-5">
         {latestProducts?.map((product, index)=>(
           <>
           { product.bestseller==true &&
