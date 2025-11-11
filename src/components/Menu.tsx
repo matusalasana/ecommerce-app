@@ -33,10 +33,10 @@ function Menu() {
   return (
     <>
     <MenuIcon onClick={() => setIsOpen('block')} />
-      <div className = {`${isOpen} flex flex-col gap-5 fixed top-0 right-0 z-50 h-screen overflow-y-scroll bg-white w-80 px-5 py-10`}>
+      <div className = {`${isOpen} flex flex-col gap-5 fixed top-0 right-0 z-50 h-screen bg-white w-80 px-5 py-10`}>
 
 
-        <div className="flex justify-between items-center static">
+        <div className="flex shrink-0 justify-between items-center">
           <div className="flex gap-3">
             <p className="bg-indigo-600 text-white font-semibold w-12 h-12 flex items-center justify-center rounded-2xl">SM</p>
             <div>
@@ -49,6 +49,7 @@ function Menu() {
         <hr className="border-gray-300" />
 
 
+      <div className="overflow-y-auto scroll-m-0">
         <div className="flex flex-col gap-3">
           <p className="text-gray-600 font-semibold mt-5">NAVIGATION</p>
           {navigationItems.map((item, index) => {
@@ -128,6 +129,8 @@ function Menu() {
             </div>
           </div>
         </div>
+
+      </div>
 
 
       </div>   
