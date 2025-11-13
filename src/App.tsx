@@ -14,6 +14,7 @@ import { useEffect, useState } from "react"
 import SignUp from "./pages/SignUp"
 import Profile from "./pages/Profile"
 import Terms from "./pages/Terms"
+import Wishlist from "./pages/Wishlist"
 
 function App() {
   const [searchVisibility, setSearchVisibility] = useState('hidden')
@@ -59,6 +60,9 @@ function App() {
             <Route  
               path="/cart" 
               element={<Cart />} />
+            <Route
+              path= "/wishlist"
+              element={<Wishlist/>} />
             <Route  
               path="/login" 
               element={<LogIn />} />

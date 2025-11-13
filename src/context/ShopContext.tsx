@@ -1,4 +1,3 @@
-
 import { 
     createContext, 
     useState, 
@@ -6,7 +5,6 @@ import {
     type ReactNode, 
     useContext
 } from "react";
-
 
 export interface Product {
     _id: string;
@@ -26,22 +24,40 @@ export interface CartItem {
     quantity: number;
 }
 
-import { products } from "../assets/assets";
+export interface WishListItem{
+    productId: string;
+}
 
+import { products } from "../assets/assets";
 
 export interface ShopContextType {
     currency: string;
     delivery_fee: number;
+    products: Product[];
+
     cartCount: number;
     cartTotal: number;
     cart: CartItem[];
-    products: Product[];
-    clearCart: () => void;
     addToCart: (productId: string) => void;
     removeFromCart: (productId: string) => void;
+    clearCart: () => void;
+
+    wishList: WishListItem[];
+    addToWishList: (productId: string) => void;
+    removeFromWishList: (productId: string) => void;
+    clearWishList: () => void;
+
+    heartStates: { [productId: string]: boolean };
+    toggleHeart: (productId: string) => void;
+    isHeartToggled: (productId: string) => boolean;
+    clearAllHearts: () => void;
 }
 
 export const ShopContext = createContext<ShopContextType | undefined>(undefined);
+
+
+
+
 
 
 
@@ -50,56 +66,107 @@ function ShopContextProvider({ children }: { children: ReactNode }) {
     const currency = "$";
     const delivery_fee = 10;
     const [cart, setCart] = useState<CartItem[]>([]);
+    const [wishList, setWishList] = useState<WishListItem[]>([]);
+    const [heartStates, setHeartStates] = useState<{ [productId: string]: boolean }>({});
 
-// Load cart from localStorage on mount
-useEffect(() => {
-    const savedCart = localStorage.getItem('shopping-cart');
-    if (savedCart) setCart(JSON.parse(savedCart));
-}, []);
-
-// Save cart to localStorage whenever cart changes
-useEffect(() => {
-    localStorage.setItem('shopping-cart', JSON.stringify(cart));
-}, [cart]);
-
-    // Add product to cart with its quantity
-    const addToCart = (productId:string) => {
-    setCart(prevCart => {
-        const existingItem = prevCart.find(item => item.productId === productId);
-        
-        if (existingItem) {
-            // Update quantity for existing item
-            existingItem.quantity += 1;
-            return [...prevCart];
-        } else {
-            // Add new item
-            return [...prevCart, { productId, quantity: 1 }];
+    useEffect(() => {
+        const savedHeartStates = localStorage.getItem('heart-states');
+        if (savedHeartStates) {
+            setHeartStates(JSON.parse(savedHeartStates));
         }
-    });
-};
+    }, []);
 
-    // Remove product from cart
+    useEffect(() => {
+        localStorage.setItem('heart-states', JSON.stringify(heartStates));
+    }, [heartStates]);
+
+    const toggleHeart = (productId: string) => {
+        setHeartStates(prev => {
+            const newState = {
+                ...prev,
+                [productId]: !prev[productId] // Toggle the heart state
+            };
+            return newState;
+        });
+    };
+
+    const isHeartToggled = (productId: string) => {
+        return !!heartStates[productId];
+    };
+
+    const clearAllHearts = () => {
+        setHeartStates({});
+    };
+
+    useEffect(() => {
+        const savedCart = localStorage.getItem('shopping-cart');
+        const savedWishList = localStorage.getItem('wishList-items');
+
+        if (savedCart) setCart(JSON.parse(savedCart));
+        if (savedWishList) setWishList(JSON.parse(savedWishList));
+
+    }, []);
+
+    useEffect(() => {
+        localStorage.setItem('shopping-cart', JSON.stringify(cart));
+    }, [cart]);
+
+    useEffect(() => {
+        localStorage.setItem('wishList-items', JSON.stringify(wishList));
+    }, [wishList]);
+
+    const addToCart = (productId:string) => {
+        setCart(prevCart => {
+            const existingItem = prevCart.find(item => item.productId === productId);
+            
+            if (existingItem) {
+                return prevCart.map(item => 
+                    item.productId === productId 
+                        ? { ...item, quantity: item.quantity + 1 }
+                        : item
+                );
+            } else {
+                return [...prevCart, { productId, quantity: 1 }];
+            }
+        });
+    };
+
     const removeFromCart = (productId: string) => {
         setCart(prevCart => prevCart.filter(item => item.productId !== productId));
-        localStorage.removeItem('shopping-cart')
     };
 
-
-    // Clear entire cart
     const clearCart = () => {
         setCart([]);
-        localStorage.clear()
     };
 
+    const cartCount = cart.length
 
-    // Calculate total items in cart (sum of quantities)
-    const cartCount = cart.length;
+    const addToWishList = (productId: string) => {
+        setWishList(prevWishList => {
+            const existingItem = prevWishList.find(item => item.productId === productId);
+            
+            if (existingItem) {
+                return prevWishList.filter(item => item.productId !== productId);
+            } else {
+                // Add to wishlist
+                return [...prevWishList, { productId }];
+            }
+        });
+    };
 
+    const removeFromWishList = (productId: string) => {
+        setWishList(prevWishList => 
+            prevWishList.filter(item => item.productId !== productId)
+        );
+    };
 
-    // Calculate total cart value
+    const clearWishList = () => {
+        setWishList([]);
+    };
+
     const cartTotal = cart.reduce((total, cartItem) => {
         const price = products.find(p => p._id === cartItem.productId)?.price || 0;
-        return (total + price) * cartItem.quantity ;
+        return total + (price * cartItem.quantity);
     }, 0);
 
     const contextValue: ShopContextType = {
@@ -112,6 +179,14 @@ useEffect(() => {
         clearCart,
         cartCount,
         cartTotal,
+        addToWishList,
+        clearWishList,
+        removeFromWishList,
+        wishList,
+        heartStates,
+        toggleHeart,
+        isHeartToggled,
+        clearAllHearts
     };
 
     return (
@@ -120,5 +195,6 @@ useEffect(() => {
         </ShopContext.Provider>
     );
 }
+
 export const useShop = () => useContext(ShopContext);
 export default ShopContextProvider;

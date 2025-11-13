@@ -1,5 +1,4 @@
-import { useContext, useState } from "react"
-import { ShopContext } from "../context/ShopContext"
+import { useShop } from "../context/ShopContext"
 import { Link } from "react-router-dom"
 import { ShoppingBag } from "lucide-react";
 import { BsHeart, BsHeartFill, BsStarFill, BsStarHalf } from "react-icons/bs";
@@ -14,10 +13,12 @@ interface Props {
 
 function ProductItem({ name, productId, imgURL, price, category }: Props) {
 
-    const item = useContext(ShopContext)
-    const [isClicked, setIsClicked] = useState(false)
-    const addToWhishlist = () => {
-        setIsClicked(!isClicked)
+    const { currency, toggleHeart, isHeartToggled, addToWishList } = useShop()!
+
+    const isToggled = isHeartToggled(productId);
+
+    const handleToggle = () => {
+        toggleHeart(productId);
     }
 
     return (
@@ -28,9 +29,9 @@ function ProductItem({ name, productId, imgURL, price, category }: Props) {
                         <img 
                             src={imgURL[0]} 
                             alt={name}
-                            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                            className="w-full h-full object-cover hover:scale-110 transition-transform duration-500"
                         />
-    =                    <div className="absolute top-0 left-0">
+    =                    <div className="absolute top-0 left-0.5">
                             <span className="bg-blue-400 text-xs font-medium px-3 py-1 rounded-full text-white capitalize shadow-sm">
                                 {category}
                             </span>
@@ -56,7 +57,7 @@ function ProductItem({ name, productId, imgURL, price, category }: Props) {
                             <span className="text-xs">{price*16} reviews)</span>
                         </div>
                         <p className="text-xl font-bold text-gray-900">
-                            {item?.currency || '$'}{price-1}.99
+                            {currency || '$'}{price-1}.99
                             <span className="ml-3 text-sm discountPrice text-gray-500">{price+20}.00</span>
                         </p>
                     </div>
@@ -66,7 +67,6 @@ function ProductItem({ name, productId, imgURL, price, category }: Props) {
                         <button 
                             onClick={(e) => {
                                 e.preventDefault();
-                                item?.addToCart(productId);
                             }}
                             className="w-[80%] bg-blue-600 hover:bg-blue-700 text-white font-semibold text-sm py-3 rounded-lg transition-all duration-200 flex items-center justify-center gap-2 group-hover:shadow-lg cursor-pointer"
                         >
@@ -75,8 +75,11 @@ function ProductItem({ name, productId, imgURL, price, category }: Props) {
                         </button>
 
                         <div className="relative">
-                            <button onClick={ () => addToWhishlist() } className="cursor-pointer">
-                                { isClicked ? <BsHeartFill size={20} className="absolute top-0 right-0 text-red-600" /> : <BsHeart size={19} className="absolute top-0 right-0 text-blue-500 hover:text-blue-700"/>}
+                            <button onClick={ () => (handleToggle(), addToWishList(productId))} className="cursor-pointer">
+                                { isToggled 
+                                    ?   <BsHeartFill size={20} className={`absolute top-0 right-0 text-red-500`} />
+                                    :   <BsHeart size={20} className= {`absolute top-0 right-0 text-blue-500`} />
+                                }
                             </button>
                         </div>
 
@@ -91,3 +94,4 @@ function ProductItem({ name, productId, imgURL, price, category }: Props) {
 }
 
 export default ProductItem
+
