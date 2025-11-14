@@ -34,7 +34,7 @@ function ProductItem({ name, productId, imgURL, price, category }: Props) {
     =                    <div className="absolute top-0 left-0.5">
                             <span className="bg-blue-400 text-xs font-medium px-3 py-1 rounded-full text-white capitalize shadow-sm">
                                 {category}
-                            </span>
+                            </span> 
                         </div>
                     </div>
                 </Link>

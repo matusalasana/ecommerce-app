@@ -4,7 +4,7 @@ import { useShop } from "../context/ShopContext"
 function Wishlist() {
 
     const items = useShop()!
-    const { products, wishList, addToWishList, removeFromWishList, clearWishList } = items
+    const { wishList, clearWishList } = items
 
   return (
     <div className="pt-30">
