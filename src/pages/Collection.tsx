@@ -251,7 +251,7 @@ function Collection({ status, onClickClose }: Props) {
                                 </button>
                             </div>
                         ) : (
-                            <div className="grid grid-cols-3 max-sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-5">
+                            <div className="grid grid-cols-3 max-sm:grid-cols-1 lg:grid-cols-4 xl:grid-cols-5 gap-5">
                                 {filteredProducts.map((product) => (
                                     <ProductItem
                                         key={product._id}

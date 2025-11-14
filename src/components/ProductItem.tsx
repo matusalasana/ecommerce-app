@@ -13,7 +13,7 @@ interface Props {
 
 function ProductItem({ name, productId, imgURL, price, category }: Props) {
 
-    const { currency, toggleHeart, isHeartToggled, addToWishList } = useShop()!
+    const { currency, toggleHeart, isHeartToggled, addToWishList, addToCart } = useShop()!
 
     const isToggled = isHeartToggled(productId);
 
@@ -67,6 +67,7 @@ function ProductItem({ name, productId, imgURL, price, category }: Props) {
                         <button 
                             onClick={(e) => {
                                 e.preventDefault();
+                                addToCart(productId)
                             }}
                             className="w-[80%] bg-blue-600 hover:bg-blue-700 text-white font-semibold text-sm py-3 rounded-lg transition-all duration-200 flex items-center justify-center gap-2 group-hover:shadow-lg cursor-pointer"
                         >
