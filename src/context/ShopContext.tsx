@@ -89,7 +89,7 @@ function ShopContextProvider({ children }: { children: ReactNode }) {
             return newState;
         });
     };
-
+   
     const isHeartToggled = (productId: string) => {
         return !!heartStates[productId];
     };
@@ -158,10 +158,15 @@ function ShopContextProvider({ children }: { children: ReactNode }) {
         setWishList(prevWishList => 
             prevWishList.filter(item => item.productId !== productId)
         );
+        toggleHeart(productId)
+      
     };
 
     const clearWishList = () => {
         setWishList([]);
+        setHeartStates({})
+        
+        
     };
 
     const cartTotal = cart.reduce((total, cartItem) => {
