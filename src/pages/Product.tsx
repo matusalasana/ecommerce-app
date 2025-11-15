@@ -47,7 +47,7 @@ function Product() {
               <img 
                 src={product.image[selectedImage]} 
                 alt={product.name}
-                className="w-full h-96 lg:h-[500px] object-cover hover:scale-105 transition-transform duration-500"
+                className="w-96 h-96 lg:h-[500px] lg:w-[500px] object-cover hover:scale-105 transition-transform duration-500"
               />
             </div>
             
